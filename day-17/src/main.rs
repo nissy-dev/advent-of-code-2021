@@ -107,5 +107,5 @@ fn part2_solver() {
         }
     }
 
-    println!("part1 ans: {:?}", candidates.len());
+    println!("part2 ans: {:?}", candidates.len());
 }
