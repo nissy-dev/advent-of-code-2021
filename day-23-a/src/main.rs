@@ -206,8 +206,8 @@ fn parse(src: &str) -> Vec<Amphipod> {
     res
 }
 
-fn part2_solver() {
-    let src = fs::read_to_string("input-part2.txt").unwrap();
+fn part1_solver() {
+    let src = fs::read_to_string("input-part1.txt").unwrap();
     let state = parse(&src);
 
     let mut pq: BinaryHeap<Node> = BinaryHeap::new();
