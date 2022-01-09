@@ -74,6 +74,7 @@ fn part1_solver() {
     println!("part1 ans: {}", count);
 }
 
+// see: https://github.com/yosuke-furukawa/advent-of-code-2021/blob/main/day-22/src/main.rs
 fn area(range: &Vec<(isize, isize)>) -> i64 {
     let (x_min, x_max) = range[0];
     let (y_min, y_max) = range[1];
