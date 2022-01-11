@@ -1,8 +1,5 @@
 // see: https://github.com/jeffomatic/adventofcode/blob/main/2021-rust/day24a/src/main.rs
-use std::{
-    collections::HashMap,
-    io::{self, Read},
-};
+use std::{collections::HashMap, fs};
 
 #[derive(Debug, Clone, Copy)]
 enum Register {
@@ -124,7 +121,8 @@ impl Solver {
             return cached;
         }
 
-        for input_guess in (1..=9).rev() {
+        // ここがaの問題と変わっただけ
+        for input_guess in 1..=9 {
             let next_z =
                 ALU::new(prev_z).eval_prog(&self.progs_by_digit[ndigit], &vec![input_guess]);
             self.recursive_calls += 1;
@@ -143,7 +141,8 @@ impl Solver {
 }
 
 fn main() {
-    let program = parse(&get_input());
+    let src = fs::read_to_string("input-part2.txt").unwrap();
+    let program = parse(&src);
     let mut progs_by_digit = Vec::new();
     let mut all_ins_iter = program.iter();
     let num_digits = 14;
@@ -167,12 +166,6 @@ fn main() {
         "{} recursive calls: {} early outs {}",
         res, solver.recursive_calls, solver.early_outs
     );
-}
-
-fn get_input() -> String {
-    let mut input = String::new();
-    io::stdin().lock().read_to_string(&mut input).unwrap();
-    return input.trim().to_string();
 }
 
 fn parse_register(src: &str) -> Register {
